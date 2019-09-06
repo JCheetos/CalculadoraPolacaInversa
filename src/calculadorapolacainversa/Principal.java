@@ -20,9 +20,11 @@ public class Principal {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String stringInicial = sc.nextLine(); //Lee la siguiente linea ingresada como los datos a operar
-        System.out.println(stringInicial); //Imprime los datos ingresados
+        System.out.println("\nString inicial:");
+        System.out.println(stringInicial+"\n"); //Imprime los datos ingresados
         String[] datos = stringInicial.split(" "); //Divide los datos ingresados por cada espacio ingresado, asignandolos a un espacio de un nuevo vector
-        System.out.println(Arrays.toString(datos)); //Imprime el array creado por la funcion anterior
+        System.out.println("Array de datos divididos:");
+        System.out.println(Arrays.toString(datos)+"\n\n"); //Imprime el array creado por la funcion anterior
         //Calcula cuantos numeros hay en el array para preparar el double[], contandolos revisando cada espacio del vector
         int k = 0;
         for (String dato : datos) {
@@ -46,33 +48,37 @@ public class Principal {
                     numeros[k - 2] = numeros[k - 2] + numeros[k - 1];
                     numeros[k - 1] = 0;
                     k--;
-                    System.out.println(numeros[k - 1]);
                     break;
                 case "-":
                     numeros[k - 2] = numeros[k - 2] - numeros[k - 1];
                     numeros[k - 1] = 0;
                     k--;
-                    System.out.println(numeros[k - 1]);
                     break;
                 case "*":
                     numeros[k - 2] = numeros[k - 2] * numeros[k - 1];
                     numeros[k - 1] = 0;
                     k--;
-                    System.out.println(numeros[k - 1]);
                     break;
                 case "/":
                     numeros[k - 2] = numeros[k - 2] / numeros[k - 1];
                     numeros[k - 1] = 0;
                     k--;
-                    System.out.println(numeros[k - 1]);
                     break;
                 default: //Caera a default si el valor de dicho espacio en el vector es un numero
                     break;
             }
         }
         //Imprime el valor del primer espacio del array de numeros, que, al acabar el proceso, deberia ser el unico numero existente del vector
-        if (numeros.length != datos.length-(numeros.length-1)) {
-            System.out.println(Arrays.toString(numeros));
+        System.out.print("Resultado:\n");
+        if (numeros.length != datos.length - (numeros.length - 1)) {
+            System.out.print("[");
+            for (int j = 0; j < k; j++) {
+                System.out.print(numeros[j]);
+                if (j!=k-1){
+                    System.out.print(", ");
+                }
+            }
+            System.out.println("]");
         } else {
             System.out.println(numeros[0]);
         }
